@@ -6,6 +6,7 @@ for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", function () {
 
         var buttonInnerHtml = this.innerHTML;
+        addAnimation(buttonInnerHtml);
 
         switch (buttonInnerHtml) {
             case ('w'):
@@ -50,6 +51,7 @@ for (var i = 0; i < buttons.length; i++) {
 // detect key press and play sound
 document.addEventListener("keydown",function(event){
     audioPlay(event.key);
+    addAnimation(event.key);
 })
 
 var audioPlay = function(character){
@@ -89,6 +91,19 @@ switch (character) {
         }
 }
 
+
+// ANIMATION 
+
+function addAnimation(currentKey){
+    var activeBtn=document.querySelector("."+currentKey);
+    activeBtn.classList.add("pressed");
+    
+    setTimeout(function(){
+        activeBtn.classList.remove("pressed");
+
+
+    },100)
+}
 // var drumAudio= new Audio("/sounds/tom-1.mp3");
 // drumAudio.play();
 
